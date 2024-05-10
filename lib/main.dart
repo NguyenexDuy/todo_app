@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:todos_flutter/themes/dark_theme.dart';
+import 'package:todos_flutter/themes/light_theme.dart';
 
 import 'pages/home_page.dart';
 
@@ -12,7 +14,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData.dark(),
+      theme: lightTheme,
+      darkTheme: darkTheme,
       debugShowCheckedModeBanner: false,
       home: HomePage(),
     );

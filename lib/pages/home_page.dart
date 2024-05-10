@@ -23,6 +23,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Theme.of(context).colorScheme.background,
       appBar: AppBar(title: const Text("Todo list")),
       body: Visibility(
         visible: isLoading,
@@ -40,35 +41,41 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             child: ListView.builder(
+              padding: const EdgeInsets.all(8),
               itemCount: items.length,
               itemBuilder: (context, index) {
                 final item = items[index] as Map;
                 final id = item['_id'] as String;
-                return ListTile(
-                  leading: CircleAvatar(child: Text("${index + 1}")),
-                  title: Text(item['title']),
-                  subtitle: Text(item['description']),
-                  onTap: () {},
-                  trailing: PopupMenuButton(
-                    onSelected: (value) {
-                      if (value == 'edit') {
-                        navigatorToEditPage(item);
-                      } else if (value == 'delete') {
-                        deleteById(id);
-                      }
-                    },
-                    itemBuilder: (context) {
-                      return [
-                        const PopupMenuItem(
-                          child: Text("Edit"),
-                          value: 'edit',
-                        ),
-                        const PopupMenuItem(
-                          child: Text("Delete"),
-                          value: 'delete',
-                        ),
-                      ];
-                    },
+                return Card(
+                  child: ListTile(
+                    leading: CircleAvatar(
+                      child: Text("${index + 1}"),
+                      backgroundColor: Theme.of(context).colorScheme.primary,
+                    ),
+                    title: Text(item['title']),
+                    subtitle: Text(item['description']),
+                    onTap: () {},
+                    trailing: PopupMenuButton(
+                      onSelected: (value) {
+                        if (value == 'edit') {
+                          navigatorToEditPage(item);
+                        } else if (value == 'delete') {
+                          deleteById(id);
+                        }
+                      },
+                      itemBuilder: (context) {
+                        return [
+                          const PopupMenuItem(
+                            child: Text("Edit"),
+                            value: 'edit',
+                          ),
+                          const PopupMenuItem(
+                            child: Text("Delete"),
+                            value: 'delete',
+                          ),
+                        ];
+                      },
+                    ),
                   ),
                 );
               },
@@ -77,6 +84,7 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
+        backgroundColor: Theme.of(context).colorScheme.primary,
         onPressed: () {
           navigatorToAddPage();
         },
