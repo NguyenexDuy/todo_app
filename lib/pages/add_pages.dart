@@ -3,15 +3,18 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
-class AppPages extends StatefulWidget {
+class AddPages extends StatefulWidget {
   final Map? todo;
-  const AppPages({super.key, this.todo});
+  const AddPages({
+    super.key,
+    this.todo,
+  });
 
   @override
-  State<AppPages> createState() => _AppPagesState();
+  State<AddPages> createState() => _AddPagesState();
 }
 
-class _AppPagesState extends State<AppPages> {
+class _AddPagesState extends State<AddPages> {
   final TextEditingController _titleController = TextEditingController();
   final TextEditingController _descriptionController = TextEditingController();
   bool isEdit = false;

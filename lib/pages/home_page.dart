@@ -97,7 +97,7 @@ class _HomePageState extends State<HomePage> {
     await Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => const AppPages(),
+          builder: (context) => const AddPages(),
         ));
     setState(() {
       isLoading = true;
@@ -109,7 +109,9 @@ class _HomePageState extends State<HomePage> {
     await Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => const AppPages(),
+          builder: (context) => AddPages(
+            todo: item,
+          ),
         ));
     setState(() {
       isLoading = true;
